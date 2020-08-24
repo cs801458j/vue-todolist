@@ -17,11 +17,14 @@ export default {
   },
   methods: {
     addTodo: function() {
-      console.log(this.newTodoItem);
+      if(this.newTodoItem !== '') {
+      //onsole.log(this.newTodoItem);
+      var obj ={completed: false, item: this.newTodoItem};
       //  저자아는 로직
-      localStorage.setItem(this.newTodoItem,this.newTodoItem);
+      localStorage.setItem(this.newTodoItem,JSON.stringify(obj));
       //this.newTodoItem = "";
       this.clearInput();
+      }
     },
     clearInput: function() {
       this.newTodoItem = '';
@@ -32,6 +35,10 @@ export default {
 
 <style scoped>
 input:focus {
+  outline: none;
+}
+
+.inputBox {
   background: white;
   height: 50px;
   line-height: 50px;
